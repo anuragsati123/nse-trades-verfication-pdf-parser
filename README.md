@@ -1,12 +1,9 @@
 # NSE Trades Verification Pdf Parser
 
----
 
 A pdf parser which parses nse-trades-verification email attachment pdf.
 
-##Overview
-
----
+## Overview
 
 People who invest/trades in Indian Stock market receives an email from NSE or BSE for verification of the buy/sell of shares by their brokers. The NSE email is generated  from email id: `nse-direct [at] nse [dot] co [dot] in` with subject line as `Trades executed at NSE`. The body of email looks as follows:
 
@@ -33,12 +30,11 @@ Usually this email is generated after one day of actual trade with all the detai
 
 This code attempts to extract these trade related details from the pdf attachment.
 
-##Usage
+## Usage
 
----
 Following code can be directly used to parse the pdf. Provide path to the original pdf from email and pan-no which is the password to the pdf.
 
-```aidl
+```java
 NseTradesParser nseTradesParser = new NseTradesParser(new File("src/main/resources/trades.pdf"),"pan-no");
 List<Trade> trades = nseTradesParser.getTrades();
 String json = nseTradesParser.getTradesJson();
@@ -46,12 +42,12 @@ String json = nseTradesParser.getTradesJson();
 
 It provides two methods to fetch the extracted data, one which gives a List of Trades and other which gives a JSON of the trades in following format:
 
-```aidl
+```json
 [
 	{
 		"srNo": 1,
 		"tmName": "ICICI SECURITIES LIMITED",
-		"clientCode": 0000000000,
+		"clientCode": 1000000000,
 		"buySell": "B",
 		"nameOfSecurity": "Ashok Leyland Limited",
 		"symbol": "ASHOKLEY",
@@ -66,9 +62,8 @@ It provides two methods to fetch the extracted data, one which gives a List of T
 ```
 This code is compiled and tested using JDK 17.
 
-##License
+## License
 
----
 Nse Trades Verification PDF Parser is provided under [MIT License](./LICENSE).
 
 It uses following dependencies which have their own license agreements:
